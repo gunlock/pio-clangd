@@ -61,7 +61,7 @@ def run_gen_clangd(target, source, env):
         result = 0
     except:
         print("do:gen-clangd failed")
-        result 1
+        result = 1
     return result
         
         
