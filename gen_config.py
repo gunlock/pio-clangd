@@ -51,6 +51,7 @@ def _get_pio_metadata(cwd: Optional[str] = None) -> Dict:
         text=True,
         check=True,
         cwd=cwd
+        # timeout=30  # 30 second timeout - metadata shouldn't take longer
     )
     return json.loads(result.stdout)
 
@@ -212,8 +213,15 @@ def _main():
         # Generate .clangd file
         gen_clangd(env_name=env_name, verbose=True)
 
+    except subprocess.TimeoutExpired as e:
+        print(f"Error: PlatformIO command timed out after {e.timeout} seconds", file=sys.stderr)
+        print("This usually means PlatformIO is stuck building or downloading dependencies.", file=sys.stderr)
+        print("Try running 'pio project metadata --json-output' manually to see what's happening.", file=sys.stderr)
+        sys.exit(1)
     except subprocess.CalledProcessError as e:
         print(f"Error running pio command: {e}", file=sys.stderr)
+        if e.stderr:
+            print(f"PlatformIO error output:\n{e.stderr}", file=sys.stderr)
         sys.exit(1)
     except json.JSONDecodeError as e:
         print(f"Error parsing JSON: {e}", file=sys.stderr)
