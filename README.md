@@ -15,7 +15,7 @@ The initial thought was to take the `compile_commands.json` file, parse it, and 
 
 ## Integration with PlatformIO
 
-This can be integrated into a PlatformIO project using the `extra_scripts` option for `platformio.ini` where targets are added to the pio CLI.  The `pio_targets.py` script can be added to a project's `extra_scripts` option, which adds a target to generate the `.clangd` configuration file along with some other convenience targets.
+This can be integrated into a PlatformIO project using the `extra_scripts` option for `platformio.ini` where targets are added to the pio CLI.  The `pio_targets.py` script can be added to a project's `extra_scripts` option, which adds a target to generate the `.clangd` configuration file.
 
 ## Usage
 
@@ -51,7 +51,7 @@ extra_scripts = pre:./pio-clangd/pio_targets.py
 5. Generate the `.clangd` configuration file for the project/environment. If the environment is not specified in the pio CLI command, it will fall back to the default environment. Run this command in the project root.
 
 ```bash
-pio run -t do:gen-clangd
+pio run -t gen-clangd
 ```
 
 6. The `.clangd` file will be generated for the project in the project root directory.
@@ -65,7 +65,6 @@ The `gen_config.py` can be invoked directly as shell script or invoked with pyth
 ## Pull Requests
 
 Pull requests are welcome given the small number of tested platforms.
-
 
 ### Platforms Tested to Date
 
