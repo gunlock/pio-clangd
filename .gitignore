@@ -1,106 +1,112 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-
-# Distribution / packaging
-.Python
+# 1. Build and Compilation Artifacts (C++/CMake)
+##################################################
+# CMake build directory - the most important exclusion
 build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+Build/
+out/
+Out/
+.cache/
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Standard C++ and compiled output
+*.o
+*.obj
+*.so
+*.a
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+*.lo
+*.la
+*.ln
 
-# pyenv
-.python-version
+# Intermediate files
+*.ilk
+*.pdb
+*.ipdb
+*.d
+*.tdb
+*.prl
 
-# pipenv
-Pipfile.lock
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# pytype static type analyzer
-.pytype/
-
-# Vim/Neovim
-*.swp
-*.swo
-*~
-.*.swp
-.*.swo
-[._]*.s[a-v][a-z]
-[._]*.sw[a-p]
-[._]s[a-rt-v][a-z]
-[._]ss[a-gi-z]
-[._]sw[a-p]
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-*.stackdump
-[Dd]esktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-*.lnk
-
-# Linux
-*~
-.fuse_hidden*
-.directory
-.Trash-*
-.nfs*
-
-# Project-specific (PlatformIO)
-.pio/
-.clang_complete
-.gcc-flags.json
+# CMake-specific files
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+Makefile
+cmake_install.cmake
+install_manifest.txt
 compile_commands.json
+
+# Visual Studio / Windows Specific (if using VS as a generator)
+*.vcxproj.user
+*.sln.
+*.suo
+*.user
+*.ncb
+*.aps
+*.plg
+*.opensdf
+*.sdf
+*.tlog
+ipch/
+
+# Xcode / macOS Specific
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+
+# 2. Python Environment and Artifacts
+#########################################
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment (standard names)
+/venv
+/env
+.venv
+/pip-wheel-metadata
+
+# Testing / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Distributions
+dist/
+build/
+*.egg-info/
+*.whl
+
+# 3. Editor/IDE Specific Files (NeoVim, VS Code, etc.)
+#########################################################
+# NeoVim / Vim
+# Swap files and backup files
+*.swp
+*.bak
+*~
+
+# Persistent undo history
+.nvim/
+.local/share/nvim/undo/
+.local/share/nvim/swap/
+
+# VS Code (common for cross-platform teams)
+.vscode/
+
+# Atom
+.atom/
+
+# JetBrains IDEs (CLion, PyCharm, etc.)
+.idea/
+
+# 4. OS/Utility Specific Files
+################################
+# Thumbnails and system files
+.DS_Store # macOS
+Thumbs.db # Windows
+desktop.ini # Windows
